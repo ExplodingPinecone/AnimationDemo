@@ -25,6 +25,15 @@ public class Mario extends Sprite {
 
 	public void act(ArrayList<Shape> obstacles) {
 		// FALL (and stop when a platform is hit)
+		boolean onGround = false;
+		for(Shape s : obstacles) {
+			if(s.intersects(this)) {
+				onGround = true;
+				break;
+			}
+		}
+		if(!onGround)
+			super.y++;
 	}
 
 
