@@ -42,13 +42,17 @@ public class Mario extends Sprite {
 		for(Shape s : obstacles) {
 			if(s.intersects(this)) {
 				onGround = true;
+				if(yV > 0 && s.getBounds().getY() > y)
+					yV = 0;
+				else if(yV < 0 && s.getBounds().getY() < y)
+					yV = 1;
 				break;
 			}
 		}
 		if(!onGround)
 			yV+=1;
-		else if (yV > 0)
-			yV = 0;
+		
+		
 		
 		
 		if(xV > maxXV) {
